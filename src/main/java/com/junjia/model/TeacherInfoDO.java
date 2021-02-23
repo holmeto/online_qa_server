@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class StudentInfoDO {
+public class TeacherInfoDO {
 
     private Long id;
 
@@ -23,14 +23,12 @@ public class StudentInfoDO {
 
     private String department;
 
-    private String class_number;
+    private String teacherNumber;
 
-    private String student_number;
+    private Date createTime;
 
-    private Date create_time;
+    private Date modifyTime;
 
-    private Date modify_time;
-
-    private Integer coin_count;
+    private Integer coinCount;
 
 }
