@@ -113,19 +113,19 @@
                 #{department,jdbcType=VARCHAR},
             </if>
             <if test="classNumber != null">
-                #{class_number,jdbcType=VARCHAR},
+                #{classNumber,jdbcType=VARCHAR},
             </if>
             <if test="studentNumber != null">
-                #{student_number,jdbcType=VARCHAR},
+                #{studentNumber,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
-                #{create_time,jdbcType=DATE},
+                #{createTime,jdbcType=DATE},
             </if>
             <if test="modifyTime != null">
-                #{modify_time,jdbcType=DATE},
+                #{modifyTime,jdbcType=DATE},
             </if>
             <if test="coinCount != null">
-                #{coin_count,jdbcType=INTEGER},
+                #{coinCount,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>

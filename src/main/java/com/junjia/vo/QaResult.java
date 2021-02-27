@@ -21,6 +21,10 @@ public class QaResult<T> {
         return new QaResult<>(true, "", null);
     }
 
+    public static <T> QaResult<T> getDefaultSuccessResult(T data) {
+        return new QaResult<>(true, "", data);
+    }
+
     public static <T> QaResult<T> getDefaultResult() {
         return new QaResult<>(false, "", null);
     }
