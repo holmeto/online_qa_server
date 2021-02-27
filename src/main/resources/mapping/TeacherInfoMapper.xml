@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.junjia.dao.mapper.StudentInfoMapper">
+<mapper namespace="com.junjia.dao.mapper.TeacherInfoMapper">
     <resultMap id="BaseResultMap" type="com.junjia.model.TeacherInfoDO">
         <!--        <result column="id" jdbcType="INTEGER" property="id" />-->
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
-        <result column="nick_name" jdbcType="VARCHAR" property="nickName"/>
+        <result column="user_name" jdbcType="VARCHAR" property="user_name"/>
+        <result column="nick_name" jdbcType="VARCHAR" property="nick_name"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
         <result column="birthday" jdbcType="DATE" property="birthday"/>
@@ -20,6 +20,10 @@
     <!--查询用户信息-->
     <select id="getTeacherInfoById" resultType="com.junjia.model.TeacherInfoDO">
         select * from teacher_info where id = #{id}
+    </select>
+
+    <select id="getTeacherInfoByPassword" resultType="com.junjia.model.TeacherInfoDO">
+        select * from teacher_info where user_name = #{userName} and password=#{password}
     </select>
     <!--删除用户信息-->
     <!--    <delete id="deleteById" parameterType="int">-->

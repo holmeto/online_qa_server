@@ -4,8 +4,8 @@
     <resultMap id="BaseResultMap" type="com.junjia.model.StudentInfoDO">
         <!--        <result column="id" jdbcType="INTEGER" property="id" />-->
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
-        <result column="nick_name" jdbcType="VARCHAR" property="nickName"/>
+        <result column="user_name" jdbcType="VARCHAR" property="user_name"/>
+        <result column="nick_name" jdbcType="VARCHAR" property="nick_name"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
         <result column="birthday" jdbcType="DATE" property="birthday"/>
@@ -19,8 +19,12 @@
     </resultMap>
 
     <!--查询用户信息-->
-    <select id="getStudentInfoById" resultType="com.junjia.model.StudentInfoDO">
+    <select id="getStudentInfoById" resultType="com.junjia.model.StudentInfoDO" parameterType="java.lang.Integer">
         select * from student_info where id = #{id}
+    </select>
+
+    <select id="getStudentInfoByPassword" resultType="com.junjia.model.StudentInfoDO">
+        select * from student_info where user_name = #{userName} and password=#{password}
     </select>
     <!--删除用户信息-->
     <!--    <delete id="deleteById" parameterType="int">-->

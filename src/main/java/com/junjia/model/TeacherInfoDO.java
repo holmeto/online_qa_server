@@ -9,9 +9,9 @@ public class TeacherInfoDO {
 
     private Long id;
 
-    private String userName;
+    private String user_name;
 
-    private String nickName;
+    private String nick_name;
 
     private String password;
 

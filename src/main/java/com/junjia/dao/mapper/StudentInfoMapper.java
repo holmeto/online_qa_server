@@ -16,4 +16,6 @@ public interface StudentInfoMapper {
     int updateStudentInfo(StudentInfoDO student);
 
     StudentInfoDO getStudentInfoById(int id);
+
+    List<StudentInfoDO> getStudentInfoByPassword(@Param("userName") String userName, @Param("password") String password);
 }
