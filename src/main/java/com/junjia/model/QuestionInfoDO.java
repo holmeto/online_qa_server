@@ -11,13 +11,13 @@ public class QuestionInfoDO {
 
     private String questionName;
 
-    private String quetionContent;
+    private String questionContent;
 
     private String questionType;
 
-    private String submitPerson;
+    private Long submitPersonId;
 
-    private Date birthday;
+    private String submitPersonName;
 
     private Date createTime;
 

@@ -11,7 +11,9 @@ import java.util.List;
 @Mapper
 public interface StudentInfoMapper {
 
-    StudentInfoDO getStudentInfo(int id);
-
     int addStudentInfo(StudentInfoDO student);
+
+    int updateStudentInfo(StudentInfoDO student);
+
+    StudentInfoDO getStudentInfoById(int id);
 }

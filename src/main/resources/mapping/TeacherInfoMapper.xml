@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.junjia.dao.mapper.StudentInfoMapper">
-    <resultMap id="BaseResultMap" type="com.junjia.model.StudentInfoDO">
+    <resultMap id="BaseResultMap" type="com.junjia.model.TeacherInfoDO">
         <!--        <result column="id" jdbcType="INTEGER" property="id" />-->
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
@@ -11,16 +11,15 @@
         <result column="birthday" jdbcType="DATE" property="birthday"/>
         <result column="sex" jdbcType="INTEGER" property="sex"/>
         <result column="department" jdbcType="VARCHAR" property="department"/>
-        <result column="class_number" jdbcType="VARCHAR" property="class_number"/>
-        <result column="student_number" jdbcType="VARCHAR" property="student_number"/>
+        <result column="teacher_number" jdbcType="VARCHAR" property="teacher_number"/>
         <result column="create_time" jdbcType="DATE" property="create_time"/>
         <result column="modify_time" jdbcType="DATE" property="modify_time"/>
         <result column="coin_count" jdbcType="INTEGER" property="coin_count"/>
     </resultMap>
 
     <!--查询用户信息-->
-    <select id="getStudentInfoById" resultType="com.junjia.model.StudentInfoDO">
-        select * from student_info where id = #{id}
+    <select id="getTeacherInfoById" resultType="com.junjia.model.TeacherInfoDO">
+        select * from teacher_info where id = #{id}
     </select>
     <!--删除用户信息-->
     <!--    <delete id="deleteById" parameterType="int">-->
@@ -43,8 +42,8 @@
 
 
     <!--增加用户信息-->
-    <insert id="addStudentInfo" parameterType="com.junjia.model.StudentInfoDO">
-        insert into student_info
+    <insert id="addTeacherInfo" parameterType="com.junjia.model.TeacherInfoDO">
+        insert into teacher_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userName != null">
                 user_name,
@@ -67,11 +66,8 @@
             <if test="department != null">
                 department,
             </if>
-            <if test="classNumber != null">
-                class_number,
-            </if>
-            <if test="studentNumber != null">
-                student_number,
+            <if test="teacherNumber != null">
+                teacher_number,
             </if>
             <if test="createTime != null">
                 create_time,
@@ -108,11 +104,8 @@
             <if test="department != null">
                 #{department,jdbcType=VARCHAR},
             </if>
-            <if test="classNumber != null">
-                #{class_number,jdbcType=VARCHAR},
-            </if>
-            <if test="studentNumber != null">
-                #{student_number,jdbcType=VARCHAR},
+            <if test="teacherNumber != null">
+                #{teacher_number,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
                 #{create_time,jdbcType=DATE},
@@ -127,7 +120,7 @@
     </insert>
 
     <!--根据id更改用户信息-->
-    <update id="updateStudentInfo" parameterType="com.junjia.model.StudentInfoDO">
+    <update id="updateTeacherInfo" parameterType="com.junjia.model.TeacherInfoDO">
         update teacher_info
         <set>
             <if test="nickName != null">
