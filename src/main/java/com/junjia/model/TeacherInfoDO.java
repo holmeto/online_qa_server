@@ -23,12 +23,12 @@ public class TeacherInfoDO {
 
     private String department;
 
-    private String teacherNumber;
+    private String teacher_number;
 
-    private Date createTime;
+    private Date create_time;
 
-    private Date modifyTime;
+    private Date modify_time;
 
-    private Integer coinCount;
+    private Integer coin_count;
 
 }

@@ -44,12 +44,13 @@ public class QuestionInfoService {
         }
         QuestionVO vo = new QuestionVO();
         vo.setId(question.getId());
-        vo.setQuestionName(question.getQuestionName());
-        vo.setQuestionContent(question.getQuestionContent());
-        vo.setSubmitPersonId(question.getSubmitPersonId().intValue());
-        vo.setSubmitPersonName(question.getSubmitPersonName());
-        vo.setCreateTime(question.getCreateTime());
-        vo.setModifyTime(question.getModifyTime());
+        vo.setQuestionName(question.getQuestion_name());
+        vo.setQuestionContent(question.getQuestion_content());
+        vo.setQuestionType(question.getQuestion_type());
+        vo.setSubmitPersonId(question.getSubmit_person_id().intValue());
+        vo.setSubmitPersonName(question.getSubmit_person_name());
+        vo.setCreateTime(question.getCreate_time());
+        vo.setModifyTime(question.getModify_time());
         return vo;
     }
 
@@ -58,13 +59,13 @@ public class QuestionInfoService {
             return null;
         }
         QuestionInfoDO result = new QuestionInfoDO();
-        result.setQuestionName(vo.getQuestionName());
-        result.setQuestionContent(vo.getQuestionContent());
-        result.setQuestionType(vo.getQuestionType());
-        result.setSubmitPersonId(Long.valueOf(vo.getSubmitPersonId()));
-        result.setSubmitPersonName(vo.getSubmitPersonName());
-        result.setCreateTime(vo.getCreateTime());
-        result.setModifyTime(vo.getModifyTime());
+        result.setQuestion_name(vo.getQuestionName());
+        result.setQuestion_content(vo.getQuestionContent());
+        result.setQuestion_type(vo.getQuestionType());
+        result.setSubmit_person_id(Long.valueOf(vo.getSubmitPersonId()));
+        result.setSubmit_person_name(vo.getSubmitPersonName());
+        result.setCreate_time(vo.getCreateTime());
+        result.setModify_time(vo.getModifyTime());
         return result;
     }
 

@@ -49,10 +49,10 @@
     <insert id="addTeacherInfo" parameterType="com.junjia.model.TeacherInfoDO">
         insert into teacher_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="userName != null">
+            <if test="user_name != null">
                 user_name,
             </if>
-            <if test="nickName != null">
+            <if test="nick_name != null">
                 nick_name,
             </if>
             <if test="password != null">
@@ -70,16 +70,16 @@
             <if test="department != null">
                 department,
             </if>
-            <if test="teacherNumber != null">
+            <if test="teacher_number != null">
                 teacher_number,
             </if>
-            <if test="createTime != null">
+            <if test="create_time != null">
                 create_time,
             </if>
-            <if test="modifyTime != null">
+            <if test="modify_time != null">
                 modify_time,
             </if>
-            <if test="coinCount != null">
+            <if test="coin_count != null">
                 coin_count,
             </if>
         </trim>
@@ -87,11 +87,11 @@
             <!--            <if test="id != null" >-->
             <!--                #{id,jdbcType=INTEGER},-->
             <!--            </if>-->
-            <if test="userName != null">
-                #{userName,jdbcType=VARCHAR},
+            <if test="user_name != null">
+                #{user_name,jdbcType=VARCHAR},
             </if>
-            <if test="nickName != null">
-                #{nickName,jdbcType=VARCHAR},
+            <if test="nick_name != null">
+                #{nick_name,jdbcType=VARCHAR},
             </if>
             <if test="password != null">
                 #{password,jdbcType=VARCHAR},
@@ -108,17 +108,17 @@
             <if test="department != null">
                 #{department,jdbcType=VARCHAR},
             </if>
-            <if test="teacherNumber != null">
-                #{teacherNumber,jdbcType=VARCHAR},
+            <if test="teacher_number != null">
+                #{teacher_number,jdbcType=VARCHAR},
             </if>
-            <if test="createTime != null">
-                #{createTime,jdbcType=DATE},
+            <if test="create_time != null">
+                #{create_time,jdbcType=DATE},
             </if>
-            <if test="modifyTime != null">
-                #{modifyTime,jdbcType=DATE},
+            <if test="modify_time != null">
+                #{modify_time,jdbcType=DATE},
             </if>
-            <if test="coinCount != null">
-                #{coinCount,jdbcType=INTEGER},
+            <if test="coin_count != null">
+                #{coin_count,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
@@ -127,14 +127,14 @@
     <update id="updateTeacherInfo" parameterType="com.junjia.model.TeacherInfoDO">
         update teacher_info
         <set>
-            <if test="nickName != null">
-                nick_name = #{nickName,jdbcType=VARCHAR},
+            <if test="nick_name != null">
+                nick_name = #{nick_name,jdbcType=VARCHAR},
             </if>
-            <if test="passWord != null">
+            <if test="pass_word != null">
                 pass_word = #{passWord,jdbcType=VARCHAR},
             </if>
-            <if test="coinCount != null">
-                coin_count = #{coinCount,jdbcType=INTEGER},
+            <if test="coin_count != null">
+                coin_count = #{coin_count,jdbcType=INTEGER},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}

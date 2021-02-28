@@ -9,18 +9,18 @@ public class QuestionInfoDO {
 
     private Long id;
 
-    private String questionName;
+    private String question_name;
 
-    private String questionContent;
+    private String question_content;
 
-    private String questionType;
+    private String question_type;
 
-    private Long submitPersonId;
+    private Long submit_person_id;
 
-    private String submitPersonName;
+    private String submit_person_name;
 
-    private Date createTime;
+    private Date create_time;
 
-    private Date modifyTime;
+    private Date modify_time;
 
 }

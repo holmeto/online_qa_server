@@ -4,11 +4,11 @@
     <resultMap id="BaseResultMap" type="com.junjia.model.QuestionInfoDO">
         <!--        <result column="id" jdbcType="INTEGER" property="id" />-->
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="question_name" jdbcType="VARCHAR" property="questionName"/>
-        <result column="question_content" jdbcType="VARCHAR" property="questionContent"/>
-        <result column="question_type" jdbcType="VARCHAR" property="questionType"/>
-        <result column="submit_person_id" jdbcType="INTEGER" property="submitPersonId"/>
-        <result column="submit_person_name" jdbcType="VARCHAR" property="submitPersonName"/>
+        <result column="question_name" jdbcType="VARCHAR" property="question_name"/>
+        <result column="question_content" jdbcType="VARCHAR" property="question_content"/>
+        <result column="question_type" jdbcType="VARCHAR" property="question_type"/>
+        <result column="submit_person_id" jdbcType="INTEGER" property="submit_person_id"/>
+        <result column="submit_person_name" jdbcType="VARCHAR" property="submit_person_name"/>
         <result column="create_time" jdbcType="DATE" property="create_time"/>
         <result column="modify_time" jdbcType="DATE" property="modify_time"/>
     </resultMap>
@@ -19,11 +19,18 @@
     </select>
 
     <select id="getQuestionList" resultType="com.junjia.model.QuestionInfoDO">
-        select * from question_info question_name like "%#{questionName}" order by create_time desc limit #{limit}, #{offset}
+        select * from question_info where 1 = 1
+        <if test="questionName != null">
+            and question_name like #{questionName,jdbcType=VARCHAR}
+        </if>
+        order by create_time desc limit #{limit}, #{offset}
     </select>
 
     <select id="getQuestionCount" resultType="java.lang.Integer">
-        select * from question_info question_name like "%#{questionName}"
+        select count(*) from question_info where 1 = 1
+        <if test="questionName != null">
+            and question_name like #{questionName,jdbcType=VARCHAR}
+        </if>
     </select>
     <!--删除用户信息-->
     <!--    <delete id="deleteById" parameterType="int">-->
@@ -49,25 +56,25 @@
     <insert id="addQuestionInfo" parameterType="com.junjia.model.QuestionInfoDO">
         insert into question_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="questionName != null">
+            <if test="question_name != null">
                 question_name,
             </if>
-            <if test="questionContent != null">
+            <if test="question_content != null">
                 question_content,
             </if>
-            <if test="questionType != null">
+            <if test="question_type != null">
                 question_type,
             </if>
-            <if test="submitPersonId != null">
+            <if test="submit_person_id != null">
                 submit_person_id,
             </if>
-            <if test="submitPersonName != null">
+            <if test="submit_person_name != null">
                 submit_person_name,
             </if>
-            <if test="createTime != null">
+            <if test="create_time != null">
                 create_time,
             </if>
-            <if test="modifyTime != null">
+            <if test="modify_time != null">
                 modify_time,
             </if>
         </trim>
@@ -75,26 +82,26 @@
             <!--            <if test="id != null" >-->
             <!--                #{id,jdbcType=INTEGER},-->
             <!--            </if>-->
-            <if test="questionName != null">
-                #{questionName,jdbcType=VARCHAR},
+            <if test="question_name != null">
+                #{question_name,jdbcType=VARCHAR},
             </if>
-            <if test="questionContent != null">
-                #{questionContent,jdbcType=VARCHAR},
+            <if test="question_content != null">
+                #{question_content,jdbcType=VARCHAR},
             </if>
-            <if test="questionType != null">
-                #{questionType,jdbcType=VARCHAR},
+            <if test="question_type != null">
+                #{question_type,jdbcType=VARCHAR},
             </if>
-            <if test="submitPersonId != null">
-                #{submitPersonId,jdbcType=INTEGER},
+            <if test="submit_person_id != null">
+                #{submit_person_id,jdbcType=INTEGER},
             </if>
-            <if test="submitPersonName != null">
-                #{submitPersonName,jdbcType=VARCHAR},
+            <if test="submit_person_name != null">
+                #{submit_person_name,jdbcType=VARCHAR},
             </if>
-            <if test="createTime != null">
-                #{createTime,jdbcType=DATE},
+            <if test="create_time != null">
+                #{create_time,jdbcType=DATE},
             </if>
-            <if test="modifyTime != null">
-                #{modifyTime,jdbcType=DATE},
+            <if test="modify_time != null">
+                #{modify_time,jdbcType=DATE},
             </if>
         </trim>
     </insert>
@@ -103,17 +110,17 @@
     <update id="updateQuestionInfo" parameterType="com.junjia.model.QuestionInfoDO">
         update question_info
         <set>
-            <if test="questionName != null">
-                question_name = #{questionName,jdbcType=VARCHAR},
+            <if test="question_name != null">
+                question_name = #{question_name,jdbcType=VARCHAR},
             </if>
-            <if test="questionContent != null">
-                question_content = #{questionContent,jdbcType=VARCHAR},
+            <if test="question_content != null">
+                question_content = #{question_content,jdbcType=VARCHAR},
             </if>
-            <if test="questionType != null">
-                question_type = #{questionType,jdbcType=INTEGER},
+            <if test="question_type != null">
+                question_type = #{question_type,jdbcType=INTEGER},
             </if>
-            <if test="modifyTime != null">
-                modify_time = #{modifyTime,jdbcType=DATE},
+            <if test="modify_time != null">
+                modify_time = #{modify_time,jdbcType=DATE},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}

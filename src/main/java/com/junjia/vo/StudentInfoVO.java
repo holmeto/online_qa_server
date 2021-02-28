@@ -2,8 +2,6 @@ package com.junjia.vo;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class StudentInfoVO {
 
@@ -17,9 +15,9 @@ public class StudentInfoVO {
 
     private String department;
 
-    private String class_number;
+    private String classNumber;
 
-    private String student_number;
+    private String studentNumber;
 
-    private Integer coin_count;
+    private Integer coinCount;
 }
