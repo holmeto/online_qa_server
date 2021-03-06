@@ -6,15 +6,13 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class QuestionVO {
+public class QuestionAnswerVO {
 
     private Long id;
 
-    private String questionName;
+    private String answerContent;
 
-    private String questionContent;
-
-    private String questionType;
+    private Integer questionId;
 
     private Integer submitPersonId;
 
@@ -22,8 +20,5 @@ public class QuestionVO {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date modifyTime;
 
 }

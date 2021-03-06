@@ -12,8 +12,8 @@
         <result column="sex" jdbcType="INTEGER" property="sex"/>
         <result column="department" jdbcType="VARCHAR" property="department"/>
         <result column="teacher_number" jdbcType="VARCHAR" property="teacher_number"/>
-        <result column="create_time" jdbcType="DATE" property="create_time"/>
-        <result column="modify_time" jdbcType="DATE" property="modify_time"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modify_time"/>
         <result column="coin_count" jdbcType="INTEGER" property="coin_count"/>
     </resultMap>
 
@@ -112,10 +112,10 @@
                 #{teacher_number,jdbcType=VARCHAR},
             </if>
             <if test="create_time != null">
-                #{create_time,jdbcType=DATE},
+                #{create_time,jdbcType=TIMESTAMP},
             </if>
             <if test="modify_time != null">
-                #{modify_time,jdbcType=DATE},
+                #{modify_time,jdbcType=TIMESTAMP},
             </if>
             <if test="coin_count != null">
                 #{coin_count,jdbcType=INTEGER},

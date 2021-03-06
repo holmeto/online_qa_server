@@ -13,8 +13,8 @@
         <result column="department" jdbcType="VARCHAR" property="department"/>
         <result column="class_number" jdbcType="VARCHAR" property="class_number"/>
         <result column="student_number" jdbcType="VARCHAR" property="student_number"/>
-        <result column="create_time" jdbcType="DATE" property="create_time"/>
-        <result column="modify_time" jdbcType="DATE" property="modify_time"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modify_time"/>
         <result column="coin_count" jdbcType="INTEGER" property="coin_count"/>
     </resultMap>
 
@@ -119,10 +119,10 @@
                 #{student_number,jdbcType=VARCHAR},
             </if>
             <if test="create_time != null">
-                #{create_time,jdbcType=DATE},
+                #{create_time,jdbcType=TIMESTAMP},
             </if>
             <if test="modify_time != null">
-                #{modify_time,jdbcType=DATE},
+                #{modify_time,jdbcType=TIMESTAMP},
             </if>
             <if test="coin_count != null">
                 #{coin_count,jdbcType=INTEGER},

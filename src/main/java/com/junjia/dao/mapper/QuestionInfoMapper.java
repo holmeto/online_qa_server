@@ -12,7 +12,7 @@ public interface QuestionInfoMapper {
 
     int addQuestionInfo(QuestionInfoDO question);
 
-    int updateTeacherInfo(QuestionInfoDO question);
+    int updateQuestionInfo(QuestionInfoDO question);
 
     QuestionInfoDO getQuestionInfoById(int id);
 

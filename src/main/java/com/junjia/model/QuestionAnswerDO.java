@@ -9,13 +9,13 @@ public class QuestionAnswerDO {
 
     private Long id;
 
-    private String answerContent;
+    private String answer_content;
 
-    private Long questionId;
+    private Integer question_id;
 
-    private Long submitPersonId;
+    private Integer submit_person_id;
 
-    private String submitPerson;
+    private String submit_person_name;
 
     private Date create_time;
 

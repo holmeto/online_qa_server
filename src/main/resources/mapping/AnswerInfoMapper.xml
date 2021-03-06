@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.junjia.dao.mapper.QuestionInfoMapper">
-    <resultMap id="BaseResultMap" type="com.junjia.model.QuestionInfoDO">
+<mapper namespace="com.junjia.dao.mapper.AnswerInfoMapper">
+    <resultMap id="BaseResultMap" type="com.junjia.model.QuestionAnswerDO">
         <!--        <result column="id" jdbcType="INTEGER" property="id" />-->
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="question_name" jdbcType="VARCHAR" property="question_name"/>
-        <result column="question_content" jdbcType="VARCHAR" property="question_content"/>
-        <result column="question_type" jdbcType="VARCHAR" property="question_type"/>
+        <result column="answer_content" jdbcType="VARCHAR" property="answer_content"/>
+        <result column="question_id" jdbcType="INTEGER" property="question_id"/>
         <result column="submit_person_id" jdbcType="INTEGER" property="submit_person_id"/>
         <result column="submit_person_name" jdbcType="VARCHAR" property="submit_person_name"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
-        <result column="modify_time" jdbcType="TIMESTAMP" property="modify_time"/>
     </resultMap>
 
     <!--查询问题信息-->
-    <select id="getQuestionInfoById" resultType="com.junjia.model.QuestionInfoDO">
-        select * from question_info where id = #{id}
+    <select id="getQuestionAnswerById" resultType="com.junjia.model.QuestionAnswerDO">
+        select * from question_answer_info where id = #{id}
     </select>
 
-    <select id="getQuestionList" resultType="com.junjia.model.QuestionInfoDO">
-        select * from question_info where 1 = 1
-        <if test="questionName != null">
-            and question_name like concat(#{questionName},'%')
+    <select id="getQuestionAnswerList" resultType="com.junjia.model.QuestionAnswerDO">
+        select * from question_answer_info where 1 = 1
+        <if test="questionId != null">
+            and question_id = #{questionId}
         </if>
-        order by create_time desc limit #{limit}, #{offset}
+        order by create_time
     </select>
 
-    <select id="getQuestionCount" resultType="java.lang.Integer">
-        select count(*) from question_info where 1 = 1
-        <if test="questionName != null">
-            and question_name like concat(#{questionName},'%')
+    <select id="getQuestionAnswerCount" resultType="java.lang.Integer">
+        select count(*) from question_answer_info where 1 = 1
+        <if test="questionId != null">
+            and question_id = #{questionId}
         </if>
     </select>
     <!--删除用户信息-->
@@ -53,17 +51,14 @@
 
 
     <!--增加用户信息-->
-    <insert id="addQuestionInfo" parameterType="com.junjia.model.QuestionInfoDO">
-        insert into question_info
+    <insert id="addQuestionAnswerInfo" parameterType="com.junjia.model.QuestionAnswerDO">
+        insert into question_answer_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="question_name != null">
-                question_name,
+            <if test="answer_content != null">
+                answer_content,
             </if>
-            <if test="question_content != null">
-                question_content,
-            </if>
-            <if test="question_type != null">
-                question_type,
+            <if test="question_id != null">
+                question_id,
             </if>
             <if test="submit_person_id != null">
                 submit_person_id,
@@ -74,22 +69,16 @@
             <if test="create_time != null">
                 create_time,
             </if>
-            <if test="modify_time != null">
-                modify_time,
-            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <!--            <if test="id != null" >-->
             <!--                #{id,jdbcType=INTEGER},-->
             <!--            </if>-->
-            <if test="question_name != null">
-                #{question_name,jdbcType=VARCHAR},
+            <if test="answer_content != null">
+                #{answer_content,jdbcType=VARCHAR},
             </if>
-            <if test="question_content != null">
-                #{question_content,jdbcType=VARCHAR},
-            </if>
-            <if test="question_type != null">
-                #{question_type,jdbcType=VARCHAR},
+            <if test="question_id != null">
+                #{question_id,jdbcType=INTEGER},
             </if>
             <if test="submit_person_id != null">
                 #{submit_person_id,jdbcType=INTEGER},
@@ -99,9 +88,6 @@
             </if>
             <if test="create_time != null">
                 #{create_time,jdbcType=TIMESTAMP},
-            </if>
-            <if test="modify_time != null">
-                #{modify_time,jdbcType=TIMESTAMP},
             </if>
         </trim>
     </insert>
@@ -120,7 +106,7 @@
                 question_type = #{question_type,jdbcType=INTEGER},
             </if>
             <if test="modify_time != null">
-                modify_time = #{modify_time,jdbcType=TIMESTAMP},
+                modify_time = #{modify_time,jdbcType=DATE},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
