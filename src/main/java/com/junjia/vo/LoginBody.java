@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class LoginBody {
 
-    public String userName;
+    private String userName;
 
-    public String password;
+    private String password;
 
-    public Integer role;
+    private Integer role;
 }

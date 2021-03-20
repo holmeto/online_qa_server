@@ -1,7 +1,6 @@
 package com.junjia.dao.mapper;
 
 
-import com.junjia.model.StudentInfoDO;
 import com.junjia.model.TeacherInfoDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -15,7 +14,7 @@ public interface TeacherInfoMapper {
 
     int updateTeacherInfo(TeacherInfoDO teacher);
 
-    TeacherInfoDO getTeqcherInfoById(int id);
+    TeacherInfoDO getTeacherInfoById(int id);
 
     List<TeacherInfoDO> getTeacherInfoByPassword(@Param("userName") String userName, @Param("password") String password);
 }

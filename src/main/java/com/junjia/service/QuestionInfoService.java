@@ -38,6 +38,10 @@ public class QuestionInfoService {
         return questionInfoMapper.addQuestionInfo(TransferToQuestionInfoDO(question));
     }
 
+    public int updateQuestion(QuestionVO question) {
+        return questionInfoMapper.updateQuestionInfo(TransferToQuestionInfoDO(question));
+    }
+
     public QuestionVO TransferToQuestionVO(QuestionInfoDO question) {
         if (question == null) {
             return null;
@@ -59,10 +63,13 @@ public class QuestionInfoService {
             return null;
         }
         QuestionInfoDO result = new QuestionInfoDO();
+        result.setId(vo.getId());
         result.setQuestion_name(vo.getQuestionName());
         result.setQuestion_content(vo.getQuestionContent());
         result.setQuestion_type(vo.getQuestionType());
-        result.setSubmit_person_id(Long.valueOf(vo.getSubmitPersonId()));
+        if (vo.getSubmitPersonId() != null) {
+            result.setSubmit_person_id(Long.valueOf(vo.getSubmitPersonId()));
+        }
         result.setSubmit_person_name(vo.getSubmitPersonName());
         result.setCreate_time(vo.getCreateTime());
         result.setModify_time(vo.getModifyTime());

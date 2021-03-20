@@ -28,8 +28,12 @@ public class TeacherInfoService {
         return teacherInfoMapper.updateTeacherInfo(TransferToTeacherInfoDO(vo));
     }
 
+    public int addTeacherInfo(TeacherInfoDO teacher) {
+        return teacherInfoMapper.addTeacherInfo(teacher);
+    }
+
     public TeacherInfoVO getTeacherInfoById(int id) {
-        TeacherInfoDO student = teacherInfoMapper.getTeqcherInfoById(id);
+        TeacherInfoDO student = teacherInfoMapper.getTeacherInfoById(id);
         return TransferToTeacherInfoVO(student);
     }
 

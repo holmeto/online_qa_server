@@ -88,5 +88,11 @@ public class QuestionController {
         return QaResult.getDefaultSuccessResult(data);
     }
 
+    @PostMapping("question/updateQuestion")
+    public QaResult updateQuestion(@RequestBody QuestionVO body) {
+        questionInfoService.updateQuestion(body);
+        return QaResult.getDefaultSuccessResult();
+    }
+
 
 }

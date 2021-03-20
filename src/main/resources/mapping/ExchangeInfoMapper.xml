@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.junjia.dao.mapper.ExchangeInfoMapper">
+    <resultMap id="BaseResultMap" type="com.junjia.model.CoinExchangeInfoDO">
+        <!--        <result column="id" jdbcType="INTEGER" property="id" />-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="submit_person_id" jdbcType="INTEGER" property="submit_person_id"/>
+        <result column="submit_person_name" jdbcType="VARCHAR" property="submit_person_name"/>
+        <result column="exchange_detail" jdbcType="VARCHAR" property="exchange_detail"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="create_time"/>
+    </resultMap>
+
+<!--    &lt;!&ndash;查询问题信息&ndash;&gt;-->
+<!--    <select id="getQuestionAnswerById" resultType="com.junjia.model.QuestionAnswerDO">-->
+<!--        select * from question_answer_info where id = #{id}-->
+<!--    </select>-->
+
+    <select id="getExchangeList" resultType="com.junjia.model.CoinExchangeInfoDO">
+        select * from coin_exchange_info where 1 = 1
+        <if test="submitPersonId != null">
+            and submit_person_id = #{submitPersonId}
+        </if>
+        order by create_time
+    </select>
+
+<!--    <select id="getQuestionAnswerCount" resultType="java.lang.Integer">-->
+<!--        select count(*) from question_answer_info where 1 = 1-->
+<!--        <if test="questionId != null">-->
+<!--            and question_id = #{questionId}-->
+<!--        </if>-->
+<!--    </select>-->
+    <!--删除用户信息-->
+    <!--    <delete id="deleteById" parameterType="int">-->
+    <!--        delete from user where id=#{id}-->
+    <!--    </delete>-->
+    <!--返回所有用户信息-->
+    <!--    <select id="selectAll"  resultType="com.example.demo.entity.User">-->
+    <!--    select * from user-->
+    <!--    </select>-->
+
+
+    <!--    <select id="getOrderListByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">-->
+    <!--        select-->
+    <!--        <include refid="Base_Column_List" />-->
+    <!--        from t_order where 1=1-->
+    <!--        <if test="userId != null">-->
+    <!--            and user_id = #{userId}-->
+    <!--        </if>-->
+    <!--    </select>-->
+
+
+    <!--增加用户信息-->
+    <insert id="addCoinExchangeInfo" parameterType="com.junjia.model.CoinExchangeInfoDO">
+        insert into coin_exchange_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="submit_person_id != null">
+                submit_person_id,
+            </if>
+            <if test="submit_person_name != null">
+                submit_person_name,
+            </if>
+            <if test="exchange_detail != null">
+                exchange_detail,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <!--            <if test="id != null" >-->
+            <!--                #{id,jdbcType=INTEGER},-->
+            <!--            </if>-->
+            <if test="submit_person_id != null">
+                #{submit_person_id,jdbcType=INTEGER},
+            </if>
+            <if test="submit_person_name != null">
+                #{submit_person_name,jdbcType=VARCHAR},
+            </if>
+            <if test="exchange_detail != null">
+                #{exchange_detail,jdbcType=VARCHAR},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>
