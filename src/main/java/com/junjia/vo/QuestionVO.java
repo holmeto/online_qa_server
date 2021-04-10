@@ -20,6 +20,8 @@ public class QuestionVO {
 
     private String submitPersonName;
 
+    private int distance;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 

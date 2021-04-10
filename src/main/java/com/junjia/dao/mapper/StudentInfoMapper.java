@@ -4,7 +4,6 @@ package com.junjia.dao.mapper;
 import com.junjia.model.StudentInfoDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -16,6 +15,8 @@ public interface StudentInfoMapper {
     int updateStudentInfo(StudentInfoDO student);
 
     StudentInfoDO getStudentInfoById(int id);
+
+    List<StudentInfoDO> getStudentInfoByCoinRank();
 
     List<StudentInfoDO> getStudentInfoByPassword(@Param("userName") String userName, @Param("password") String password);
 }

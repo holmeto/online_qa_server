@@ -6,6 +6,7 @@ package com.junjia.utils;
  * @author june
  * @version 0.1
  */
+import lombok.Data;
 import org.wltea.analyzer.IKSegmentation;
 import org.wltea.analyzer.Lexeme;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@Data
 public class SimHash {
 
     private String tokens;

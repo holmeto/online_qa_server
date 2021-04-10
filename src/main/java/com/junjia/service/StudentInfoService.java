@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentInfoService {
@@ -34,6 +35,14 @@ public class StudentInfoService {
             return null;
         }
         return TransferToStudentInfoVO(res.get(0));
+    }
+
+    public List<StudentInfoVO> getStudentInfoByCoinRank() {
+        List<StudentInfoDO> res = studentInfoMapper.getStudentInfoByCoinRank();
+        if (res == null || res.size() == 0) {
+            return null;
+        }
+        return res.stream().map(this::TransferToStudentInfoVO).collect(Collectors.toList());
     }
 
     public StudentInfoVO TransferToStudentInfoVO(StudentInfoDO student) {

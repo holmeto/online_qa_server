@@ -26,6 +26,10 @@
     <select id="getStudentInfoByPassword" resultType="com.junjia.model.StudentInfoDO">
         select * from student_info where user_name = #{userName} and password=#{password}
     </select>
+
+    <select id="getStudentInfoByCoinRank" resultType="com.junjia.model.StudentInfoDO">
+        select * from student_info order by coin_count desc limit 0, 3
+    </select>
     <!--删除用户信息-->
     <!--    <delete id="deleteById" parameterType="int">-->
     <!--        delete from user where id=#{id}-->

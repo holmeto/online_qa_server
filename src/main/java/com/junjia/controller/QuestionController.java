@@ -4,6 +4,7 @@ import com.junjia.model.Common;
 import com.junjia.service.QuestionInfoService;
 import com.junjia.service.StudentInfoService;
 import com.junjia.service.TeacherInfoService;
+import com.junjia.utils.SimHash;
 import com.junjia.vo.*;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
 
 @RestController()
 public class QuestionController {
@@ -85,6 +86,33 @@ public class QuestionController {
         QaQueryResult<List<QuestionVO>> data = new QaQueryResult<>();
         data.setData(list);
         data.setTotal(total);
+        return QaResult.getDefaultSuccessResult(data);
+    }
+
+    @PostMapping("question/getSimilarQuestion")
+    public QaResult getSimilarQuestion(@RequestBody QuestionQuery query) throws IOException {
+        query.setQuestionName(Strings.trimToNull(query.getQuestionName()));
+        List<QuestionVO> list = questionInfoService.getQuestionList("", 0, 1000);
+        if (list == null || list.size() == 0){
+            QaQueryResult<List<QuestionVO>> data = new QaQueryResult<>();
+            data.setData(list);
+            data.setTotal(0);
+            return QaResult.getDefaultSuccessResult(data);
+        }
+        SimHash standard = new SimHash(query.getQuestionName(), 64);
+        list.forEach(t -> {
+            try {
+                SimHash temp = new SimHash(t.getQuestionName(), 64);
+                int dis = standard.getDistance(standard.getStrSimHash(), temp.getStrSimHash());
+                t.setDistance(dis);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        list.sort(Comparator.comparingInt(QuestionVO::getDistance));
+        QaQueryResult<List<QuestionVO>> data = new QaQueryResult<>();
+        data.setData(list.subList(0, 5));
+        data.setTotal(1);
         return QaResult.getDefaultSuccessResult(data);
     }
 

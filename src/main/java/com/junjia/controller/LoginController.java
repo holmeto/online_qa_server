@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 public class LoginController {
@@ -64,7 +65,15 @@ public class LoginController {
         return result;
     }
 
-
-
+    @PostMapping("/getCoinRankList")
+    public QaResult getUserInfoByCoinRank() {
+        List<StudentInfoVO> list = studentInfoService.getStudentInfoByCoinRank();
+        if (list != null && list.size() > 0) {
+            QaResult<List<StudentInfoVO>> result = QaResult.getDefaultSuccessResult();
+            result.setData(list);
+            return result;
+        }
+        return QaResult.getDefaultSuccessResult();
+    }
 
 }
