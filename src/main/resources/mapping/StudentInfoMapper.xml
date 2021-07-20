@@ -95,11 +95,11 @@
             <!--            <if test="id != null" >-->
             <!--                #{id,jdbcType=INTEGER},-->
             <!--            </if>-->
-            <if test="userName != null">
-                #{userName,jdbcType=VARCHAR},
+            <if test="user_name != null">
+                #{user_name,jdbcType=VARCHAR},
             </if>
-            <if test="nickName != null">
-                #{nickName,jdbcType=VARCHAR},
+            <if test="nick_name != null">
+                #{nick_name,jdbcType=VARCHAR},
             </if>
             <if test="password != null">
                 #{password,jdbcType=VARCHAR},
