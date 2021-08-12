@@ -201,6 +201,7 @@ public class SimHash {
         // 根据鸽巢原理（也成抽屉原理，见组合数学），如果两个签名的海明距离在 3 以内，它们必有一块签名subByDistance()完全相同。
         int dis2 = hash1.getDistance(hash1.strSimHash, hash3.strSimHash);
         System.out.println(hash1.hammingDistance(hash3) + " " + dis2);
+
     }
 
 }
