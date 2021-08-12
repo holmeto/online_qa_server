@@ -194,7 +194,7 @@ public class SimHash {
         System.out.println(hash3.intSimHash + "  " + hash3.intSimHash.bitCount());
         hash1.subByDistance(hash3, 3);
 
-        System.out.println("============================");
+        System.out.println("=============+++++++++=================");
 
         int dis = hash1.getDistance(hash1.strSimHash, hash2.strSimHash);
         System.out.println(hash1.hammingDistance(hash2) + " " + dis);
