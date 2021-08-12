@@ -202,4 +202,5 @@ public class SimHash {
         int dis2 = hash1.getDistance(hash1.strSimHash, hash3.strSimHash);
         System.out.println(hash1.hammingDistance(hash3) + " " + dis2);
     }
+
 }
